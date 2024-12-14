@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagihan Listrik PLN Ciledug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tagihan Listrik PLN Ciledug</h2>
+        <label for="name">Nama Pelanggan:</label>
+        <input type="text" id="name" placeholder="Masukkan nama pelanggan">
+
+        <label for="category">Kategori:</label>
+        <select id="category">
+            <option value="sosial">Sosial</option>
+            <option value="rumah">Rumah</option>
+            <option value="industri">Industri</option>
+        </select>
+
+        <label for="usage">Jumlah Pemakaian Listrik (KWH):</label>
+        <input type="number" id="usage" placeholder="Masukkan jumlah pemakaian">
+
+        <button onclick="calculateBill()">Proses</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateBill() {
+            const name = document.getElementById("name").value;
+            const category = document.getElementById("category").value;
+            const usage = parseInt(document.getElementById("usage").value);
+
+            if (!name || isNaN(usage)) {
+                alert("Harap isi semua field dengan benar.");
+                return;
+            }
+
+            // Data kategori
+            const categories = {
+                sosial: { abodemen: 10000, tarif: 300, pajak: 0 },
+                rumah: { abodemen: 30000, tarif: 500, pajak: 0.1 },
+                industri: { abodemen: 50000, tarif: 1000, pajak: 0.3 }
+            };
+
+            const selectedCategory = categories[category];
+
+            let rows = "";
+            let subtotal = 0;
+
+            for (let i = 1; i <= usage; i++) {
+                const tarifPerRow = selectedCategory.tarif * i;
+                const abodemen = selectedCategory.abodemen;
+                const subTotalPerRow = tarifPerRow + abodemen;
+
+                rows += `<tr>
+                    <td>${i}</td>
+                    <td>${tarifPerRow}</td>
+                    <td>${abodemen}</td>
+                    <td>${subTotalPerRow}</td>
+                </tr>`;
+                subtotal = subTotalPerRow; // Assign last subTotalPerRow
+            }
+
+            const tax = subtotal * selectedCategory.pajak;
+            const total = subtotal + tax;
+
+            document.getElementById("result").innerHTML = `
+                <h3>Tagihan Listrik</h3>
+                <p><strong>Nama Pelanggan:</strong> ${name}</p>
+                <p><strong>Kategori:</strong> ${category}</p>
+                <p><strong>Jumlah Pemakaian:</strong> ${usage} KWH</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jumlah</th>
+                            <th>Tarif Per KWH</th>
+                            <th>Abodemen</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+                <p><strong>Subtotal:</strong> Rp ${subtotal}</p>
+                <p><strong>Pajak:</strong> Rp ${tax}</p>
+                <p><strong>Total Bayar:</strong> Rp ${total}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
+

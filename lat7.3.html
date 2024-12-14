@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderful Indonesia - Explore the Beauty</title>
+    <style>
+        /* Mencegah scroll horizontal */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden; /* Mencegah scroll kanan kiri */
+            box-sizing: border-box;
+        }
+
+        /* Mengatur agar tidak melebihi layar */
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Mengatur layout tabel agar pas dengan layar */
+        table {
+            width: 100%; /* Tabel memenuhi lebar layar */
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            word-wrap: break-word; /* Menghindari teks keluar dari kotak */
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        td img {
+            width: 100%; /* Gambar menyesuaikan ukuran kolom */
+            max-width: 500px; /* Membatasi ukuran gambar agar tidak terlalu besar */
+            border-radius: 10px;
+        }
+
+        /* Header dengan posisi tetap di atas */
+        .header {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Tambahkan padding pada konten agar tidak tertutup header */
+        .content {
+            padding-top: 120px;
+        }
+
+        /* Footer tetap di bagian bawah */
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Tombol CTA (Call to Action) */
+        .cta {
+            background-color: #2980b9;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .cta:hover {
+            background-color: #1c5981;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Wonderful Indonesia</h1>
+        <p>Explore the beauty of Indonesia’s top tourist destinations</p>
+    </div>
+
+    <!-- Content Section (Table Layout for Tourist Destinations) -->
+    <div class="content">
+        <table>
+            <tr>
+                <th>Destination</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>More Info</th>
+            </tr>
+            <tr>
+                <td>Bali</td>
+                <td>
+                    Bali adalah pulau paling terkenal di Indonesia, sering disebut sebagai "Pulau Dewata." Bali dikenal karena keindahan alamnya, termasuk pantai berpasir putih, terasering sawah, gunung berapi, dan hutan tropis. Selain alam, Bali juga memiliki budaya yang kaya dengan banyak upacara Hindu, tari-tarian tradisional, dan seni lokal. 
+                </td>
+                <td><img src="asset/bali.jpg" alt="Bali"></td>
+                <td><a href="https://www.indonesia.travel/gb/en/destinations/bali-nusa-tenggara/bali" class="cta">Explore Bali</a></td>
+            </tr>
+            <tr>
+                <td>Raja Ampat</td>
+                <td>
+                    Raja Ampat adalah kepulauan di Papua Barat, Indonesia, yang terkenal karena kekayaan bawah lautnya. Raja Ampat dianggap sebagai salah satu tempat menyelam terbaik di dunia dengan biodiversitas laut yang sangat tinggi. Kepulauan ini terdiri dari lebih dari 1.500 pulau kecil, teluk, dan pasir putih yang memukau.
+                </td>
+                <td><img src="asset/raja4.jpg" alt="raja ampat"></td>
+                <td><a href="https://www.indonesia.travel/gb/en/destinations/maluku-papua/raja-ampat" class="cta">Discover Raja Ampat</a></td>
+            </tr>
+            <tr>
+                <td>Borobudur</td>
+                <td>
+                    Candi Borobudur adalah salah satu candi Buddha terbesar di dunia dan merupakan Situs Warisan Dunia UNESCO. Terletak di Magelang, Jawa Tengah, Borobudur dibangun pada abad ke-8 dan 9 selama masa Dinasti Syailendra. Candi ini memiliki arsitektur yang mengesankan dengan relief batu yang menggambarkan kehidupan Buddha dan filosofi Buddha.
+                </td>
+                <td><img src="asset/borobudur.jpg" alt="Borobudur"></td>
+                <td><a href="https://www.indonesia.travel/gb/en/destinations/java/borobudur" class="cta">Visit Borobudur</a></td>
+            </tr>
+            <tr>
+                <td>Pulau Komodo</td>
+                <td>
+                    Pulau Komodo adalah salah satu destinasi wisata paling unik di Indonesia, terletak di Kepulauan Nusa Tenggara, tepatnya di Provinsi Nusa Tenggara Timur. Pulau ini terkenal sebagai habitat asli Komodo, spesies kadal terbesar di dunia yang hanya ditemukan di daerah ini.                 </td>
+                <td><img src="asset/komodo.jpg" alt="Pulau Komodo"></td>
+                <td><a href="https://www.indonesia.travel/gb/en/destinations/java/borobudur" class="cta">Discover pulau komodo</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Ammar Ramadhan. All Rights Reserved.</p>
+        <p>Follow us on <a href="https://www.instagram.com/Ammar_r.sa" target="_blank">Instagram</a>.</p>
+    </div>
+
+</body>
+</html>

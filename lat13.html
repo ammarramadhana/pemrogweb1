@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deret Bilangan Genap Habis Dibagi 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f4f7;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            text-align: left;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Deret Bilangan Genap Habis Dibagi 3</h2>
+        <button onclick="generateSeries()">Generate Deret</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function generateSeries() {
+            let start = parseInt(prompt("Masukkan nilai awal:", "0"));
+            let end = parseInt(prompt("Masukkan nilai akhir:", "20"));
+
+            // Validasi input apakah angka
+            if (isNaN(start) || isNaN(end)) {
+                document.getElementById("output").innerHTML = "<p style='color: red;'>Harap masukkan angka yang valid.</p>";
+                return;
+            }
+
+            let series = [];
+            let sum = 0;
+            let count = 0;
+            let i = start;
+
+    
+            if (i % 6 !== 0) { 
+                i = (i + 6) - (i % 6);
+            }
+
+            while (i <= end) {
+                series.push(i);
+                sum += i;
+                count++;
+                i += 6; 
+            }
+
+            // Menampilkan hasil
+            let output = `
+                <strong>Nilai Awal:</strong> ${start}<br>
+                <strong>Nilai Akhir:</strong> ${end}<br>
+                <strong>Deret yang tampil:</strong> ${series.join(" ")}<br>
+                <strong>Jumlah deret bilangan:</strong> ${count} bilangan<br>
+                <strong>Jumlah nilai bilangan tersebut:</strong> ${sum}
+            `;
+            document.getElementById("output").innerHTML = output;
+        }
+    </script>
+</body>
+</html>

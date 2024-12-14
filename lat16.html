@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <style>
+    /* body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .menu {
+      margin-bottom: 20px;
+    }
+
+    .menu select, .menu button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .form-container {
+      margin-top: 20px;
+    }
+
+    .form-container input, .form-container button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    } */
+  </style>
+</head>
+<body>
+
+  <h1>Menu </h1>
+  <div class="menu">
+    <label for="menuSelect">Pilih Menu:</label>
+    <select id="menuSelect">
+      <option value="1">Menghitung Kalkulator</option>
+      <option value="2">Menghitung Luas Trapesium</option>
+      <option value="3">Menghitung Deret Bilangan</option>
+    </select>
+    <button onclick="tampilkanForm()">Tampilkan</button>
+  </div>
+
+  <div id="formContainer" class="form-container"></div>
+  <div id="result" class="result"></div>
+
+  <script>
+    function tampilkanForm() {
+      const menu = document.getElementById('menuSelect').value;
+      const formContainer = document.getElementById('formContainer');
+      const result = document.getElementById('result');
+
+      result.innerHTML = ""; // Clear previous results
+      formContainer.innerHTML = ""; // Clear previous form
+
+      if (menu == "1") {
+        formContainer.innerHTML = `
+          <h3>Kalkulator</h3>
+          <input type="number" id="num1" placeholder="Angka pertama">
+          <input type="number" id="num2" placeholder="Angka kedua">
+          <select id="operation">
+            <option value="add">Tambah</option>
+            <option value="subtract">Kurang</option>
+            <option value="multiply">Kali</option>
+            <option value="divide">Bagi</option>
+          </select>
+          <button onclick="hitungKalkulator()">Hitung</button>
+        `;
+      } else if (menu == "2") {
+        formContainer.innerHTML = `
+          <h3>Luas Trapesium</h3>
+          <input type="number" id="alas1" placeholder="Alas 1">
+          <input type="number" id="alas2" placeholder="Alas 2">
+          <input type="number" id="tinggi" placeholder="Tinggi">
+          <button onclick="hitungLuasTrapesium()">Hitung</button>
+        `;
+      } else if (menu == "3") {
+        formContainer.innerHTML = `
+          <h3>Deret Bilangan</h3>
+          <input type="number" id="awal" placeholder="Angka awal">
+          <input type="number" id="selisih" placeholder="Selisih">
+          <input type="number" id="jumlah" placeholder="Jumlah bilangan">
+          <button onclick="hitungDeret()">Hitung</button>
+        `;
+      }
+    }
+
+    function hitungKalkulator() {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      const operation = document.getElementById('operation').value;
+
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById('result').innerHTML = "Harap masukkan angka yang valid.";
+        return;
+      }
+
+      let hasil;
+      switch (operation) {
+        case 'add':
+          hasil = num1 + num2;
+          break;
+        case 'subtract':
+          hasil = num1 - num2;
+          break;
+        case 'multiply':
+          hasil = num1 * num2;
+          break;
+        case 'divide':
+          hasil = num2 !== 0 ? num1 / num2 : "Tidak bisa membagi dengan nol";
+          break;
+        default:
+          hasil = "Operasi tidak dikenali";
+      }
+
+      document.getElementById('result').innerHTML = `Hasil: ${hasil}`;
+    }
+
+    function hitungLuasTrapesium() {
+      const alas1 = parseFloat(document.getElementById('alas1').value);
+      const alas2 = parseFloat(document.getElementById('alas2').value);
+      const tinggi = parseFloat(document.getElementById('tinggi').value);
+
+      if (isNaN(alas1) || isNaN(alas2) || isNaN(tinggi)) {
+        document.getElementById('result').innerHTML = "Harap masukkan angka yang valid.";
+        return;
+      }
+
+      const luas = 0.5 * (alas1 + alas2) * tinggi;
+      document.getElementById('result').innerHTML = `Luas Trapesium: ${luas}`;
+    }
+
+    function hitungDeret() {
+      const awal = parseInt(document.getElementById('awal').value);
+      const selisih = parseInt(document.getElementById('selisih').value);
+      const jumlah = parseInt(document.getElementById('jumlah').value);
+
+      if (isNaN(awal) || isNaN(selisih) || isNaN(jumlah) || jumlah <= 0) {
+        document.getElementById('result').innerHTML = "Harap masukkan nilai yang valid dan jumlah harus lebih dari 0.";
+        return;
+      }
+
+      let deret = [];
+      let current = awal;
+
+      for (let i = 0; i < jumlah; i++) {
+        deret.push(current);
+        current += selisih;
+      }
+
+      document.getElementById('result').innerHTML = `Deret Bilangan: ${deret.join(', ')}`;
+    }
+  </script>
+
+</body>
+</html>

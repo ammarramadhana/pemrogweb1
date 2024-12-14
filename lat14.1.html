@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menghitung Luas Trapesium</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Menghitung Luas Trapesium</h1>
+  <p>Diketahui :</p>
+  <p id="diketahui"></p>
+  <p>Maka :</p>
+  <p id="hasil" class="result"></p>
+
+  <script>
+    // Definisikan nilai untuk garis atas, garis bawah, dan tinggi
+    const garisAtas = 10; // Nilai dalam cm
+    const garisBawah = 14; // Nilai dalam cm
+    const tinggi = 8; // Nilai dalam cm
+
+    // Hitung luas trapesium
+    const luas = 0.5 * (garisAtas + garisBawah) * tinggi;
+
+    // Tampilkan data yang diketahui
+    document.getElementById("diketahui").innerHTML = `
+      Garis Atas: ${garisAtas} Cm<br>
+      Garis Bawah: ${garisBawah} Cm<br>
+      Tinggi: ${tinggi} Cm
+    `;
+
+    // Tampilkan hasil perhitungan
+    document.getElementById("hasil").innerHTML = `
+      Luas: 0.5 x (${garisAtas} + ${garisBawah}) x ${tinggi} = ${luas} Cm<sup>2</sup>
+    `;
+  </script>
+
+</body>
+</html>

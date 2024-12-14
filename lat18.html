@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angka Terbesar dan Jumlahnya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Angka Terbesar dan Jumlahnya</h1>
+    <p>Kumpulan Angka: <span id="numbers">50, 100, 80, 65, 70, 100, 100, 45, 90</span></p>
+    <button onclick="findMaxAndCount()">Proses</button>
+    <div class="result">
+      <p>Angka Terbesar: <span id="maxNumber">...</span></p>
+      <p>Jumlah Angka Terbesar: <span id="maxCount">...</span></p>
+    </div>
+  </div>
+
+  <script>
+    function findMaxAndCount() {
+      const numbers = [50, 100, 80, 65, 70, 100, 100, 45, 90];
+      const maxNumber = Math.max(...numbers);
+      const maxCount = numbers.filter(num => num === maxNumber).length;
+
+      document.getElementById('maxNumber').textContent = maxNumber;
+      document.getElementById('maxCount').textContent = maxCount;
+    }
+  </script>
+</body>
+</html>

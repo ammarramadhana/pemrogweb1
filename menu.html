@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #333;
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                overflow-y: auto; /* Menambahkan scroll jika tinggi menu lebih besar dari frame */
+            }
+            li {
+                padding: 10px;
+                text-align: center;
+            }
+            li a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                background-color: #333;
+                border-radius: 5px;
+            }
+            li a:hover {
+                background-color: #111;
+            }
+            /* Highlight untuk link yang aktif */
+            li a.active {
+                background-color: #4CAF50;
+                border: 2px solid white;
+                color: white;
+            }
+        </style>
+        <script>
+            // Fungsi untuk mengaktifkan highlight pada menu yang diklik
+            function activateMenu(e) {
+                var menuItems = document.querySelectorAll('ul li a');
+                // Hilangkan kelas "active" dari semua menu
+                menuItems.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                // Tambahkan kelas "active" pada menu yang diklik
+                e.classList.add('active');
+            }
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li><a href="home.html" target="kanan" onclick="activateMenu(this)">Home</a></li>
+            <li><a href="lat2.html" target="kanan" onclick="activateMenu(this)">Latihan 2</a></li>
+            <li><a href="lat3.1.html" target="kanan" onclick="activateMenu(this)">Latihan 3.1</a></li>
+            <li><a href="lat3.2.html" target="kanan" onclick="activateMenu(this)">Latihan 3.2</a></li>
+            <li><a href="lat3.3.html" target="kanan" onclick="activateMenu(this)">Latihan 3.3</a></li>
+            <li><a href="pertemuan5/index.html" target="kanan" onclick="activateMenu(this)">Latihan 5</a></li>
+            <li><a href="lat6.1.html" target="kanan" onclick="activateMenu(this)">Latihan 6.1</a></li>
+            <li><a href="lat6.2.html" target="kanan" onclick="activateMenu(this)">Latihan 6.2</a></li>
+            <li><a href="lat6.3.html" target="kanan" onclick="activateMenu(this)">Latihan 6.3</a></li>
+            <li><a href="lat7.1.html" target="kanan" onclick="activateMenu(this)">Latihan 7.1</a></li>
+            <li><a href="lat7.2.html  " target="kanan" onclick="activateMenu(this)">Latihan 7.2</a></li>
+            <li><a href="lat7.3.html  " target="kanan" onclick="activateMenu(this)">Latihan 7.3</a></li>
+            <li><a href="lat9.html" target="kanan" onclick="activateMenu(this)">Latihan 9</a></li>
+            <li><a href="UTS.html" target="kanan" onclick="activateMenu(this)">UTS</a></li>
+            <li><a href="lat13.html" target="kanan" onclick="activateMenu(this)">Latihan 13</a></li>
+            <li><a href="lat14.1.html" target="kanan" onclick="activateMenu(this)">Latihan 14.1</a></li>
+            <li><a href="lat14.2.html" target="kanan" onclick="activateMenu(this)">Latihan 14.2</a></li>
+            <li><a href="lat14.3.html" target="kanan" onclick="activateMenu(this)">Latihan 14.3</a></li>
+            <li><a href="lat15.html" target="kanan" onclick="activateMenu(this)">Latihan 15</a></li>
+            <li><a href="lat16.html" target="kanan" onclick="activateMenu(this)">Latihan 16</a></li>
+            <li><a href="lat18.html" target="kanan" onclick="activateMenu(this)">Latihan 18</a></li>
+        </ul>
+    </body>
+</html>

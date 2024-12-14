@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Kredit Rumah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input, button {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>PROGRAM KREDIT RUMAH</h1>
+
+    <div class="form-group">
+        <label for="typeRumah">Type Rumah</label>
+        <select id="typeRumah">
+            <option value="120000000">ALAMANDA - 120.000.000</option>
+            <option value="130000000">MAWAR - 130.000.000</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="lamaKredit">Lama Kredit (bulan)</label>
+        <input type="number" id="lamaKredit" placeholder="Masukkan lama kredit">
+    </div>
+
+    <button onclick="prosesKredit()">Proses</button>
+    <button onclick="resetForm()">Reset</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function prosesKredit() {
+            const typeRumah = parseInt(document.getElementById('typeRumah').value);
+            const lamaKredit = parseInt(document.getElementById('lamaKredit').value);
+
+            if (!lamaKredit || lamaKredit <= 0) {
+                alert('Masukkan lama kredit yang valid.');
+                return;
+            }
+
+            const uangMuka = typeRumah * 0.2;
+            const sisa = typeRumah - uangMuka;
+            const angsuran = Math.round(sisa / lamaKredit);
+
+            let output = `<h3>Detail Kredit</h3>
+                          <p>Type Rumah: ${typeRumah === 120000000 ? 'ALAMANDA' : 'MAWAR'}</p>
+                          <p>Harga Rumah: Rp ${typeRumah.toLocaleString()}</p>
+                          <p>Uang Muka: Rp ${uangMuka.toLocaleString()}</p>
+                          <p>Sisa: Rp ${sisa.toLocaleString()}</p>
+                          <p>Lama Kredit: ${lamaKredit} bulan</p>
+                          <p>Angsuran: Rp ${angsuran.toLocaleString()} per bulan</p>`;
+
+            output += '<table><tr><th>Bulan</th><th>Angsuran</th><th>Sisa</th></tr>';
+            let sisaTemp = sisa;
+
+            for (let i = 1; i <= lamaKredit; i++) {
+                sisaTemp -= angsuran;
+                output += `<tr>
+                            <td>${i}</td>
+                            <td>Rp ${angsuran.toLocaleString()}</td>
+                            <td>Rp ${Math.max(sisaTemp, 0).toLocaleString()}</td>
+                          </tr>`;
+            }
+
+            output += '</table>';
+
+            document.getElementById('result').innerHTML = output;
+        }
+
+        function resetForm() {
+            document.getElementById('typeRumah').value = '120000000';
+            document.getElementById('lamaKredit').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

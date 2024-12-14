@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data Siswa</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            width: 500px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            font-weight: bold;
+            color: white;
+            padding: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .data-siswa {
+            background-color: #4CAF50;
+        }
+        .hobby-section {
+            background-color: #FFA500;
+        }
+        .gender-section {
+            background-color: #9C27B0;
+        }
+        .place-section {
+            background-color: #4CAF50;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input[type="checkbox"],
+        .form-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .button-group button {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .button-group button:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+<script>
+    function resetForm() {
+        location.reload();
+    }
+
+    function submitForm() {
+        alert("Data berhasil dikirim!");
+    }
+</script>
+
+</head>
+<body>
+    <div class="form-container">
+        <h2>FORMULIR DATA SISWA</h2>
+        
+        <div class="section-title data-siswa">DATA SISWA</div>
+        <div class="form-group">
+            <label for="nim">NIM</label>
+            <input type="text" id="nim" name="nim">
+        </div>
+        <div class="form-group">
+            <label for="nama">NAMA LENGKAP</label>
+            <input type="text" id="nama" name="nama">
+        </div>
+
+        <div class="section-title hobby-section">Hoby Anda</div>
+        <div class="form-group">
+            <label><input type="checkbox" id="games" name="hobby" value="Games"> Games</label>
+            <label><input type="checkbox" id="musik" name="hobby" value="Musik"> Musik</label>
+            <label><input type="checkbox" id="renang" name="hobby" value="Renang"> Renang</label>
+        </div>
+
+        <div class="section-title gender-section">Jenis Kelamin Anda</div>
+        <div class="form-group">
+            <label><input type="radio" id="pria" name="gender" value="Pria"> Pria</label>
+            <label><input type="radio" id="wanita" name="gender" value="Wanita"> Wanita</label>
+        </div>
+
+        <div class="section-title place-section">Tempat Favorit</div>
+        <div class="form-group">
+            <select name="tempat" id="tempat">
+                <option value="">Pilih salah satu</option>
+                <option value="Pantai">Pantai</option>
+                <option value="Gunung">Gunung</option>
+                <option value="Mall">Mall</option>
+            </select>
+        </div>
+
+        <div class="button-group">
+            <button type="button" onclick="submitForm()">Kirim</button>
+            <button type="button" onclick="resetForm()">Batal</button>
+        </div>
+    </div>
+</body>
+</html>
